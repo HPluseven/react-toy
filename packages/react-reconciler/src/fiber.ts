@@ -70,7 +70,6 @@ export class FiberRootNode {
 	}
 }
 
-// React Element -> Fiber
 export function createFiberFromElement(element: ReactElement): FiberNode {
 	const { type, key, props } = element;
 	let fiberTag: WorkTag = FunctionComponent;

@@ -55,6 +55,7 @@ const bubbleProperties = (completeWork: FiberNode) => {
 
 export const completeWork = (workInProgress: FiberNode) => {
 	const newProps = workInProgress.pendingProps;
+
 	switch (workInProgress.tag) {
 		case HostComponent:
 			// 初始化DOM
@@ -73,8 +74,8 @@ export const completeWork = (workInProgress: FiberNode) => {
 			return null;
 		case HostText:
 			// 初始化DOM
-			const textInstance = createTextInstance(newProps.content);
-			workInProgress.stateNode = textInstance;
+			const TextInstance = createTextInstance(newProps.content);
+			workInProgress.stateNode = TextInstance;
 			// 冒泡flag
 			bubbleProperties(workInProgress);
 			return null;
