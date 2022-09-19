@@ -64,14 +64,19 @@ importers:
 
   packages/react-reconciler:
     specifiers:
+      react: workspace:*
       react-dom: workspace:*
       shared: workspace:*
     dependencies:
+      react: link:../react
       react-dom: link:../react-dom
       shared: link:../shared
 
   packages/shared:
-    specifiers: {}
+    specifiers:
+      react: workspace:*
+    dependencies:
+      react: link:../react
 
 packages:
 

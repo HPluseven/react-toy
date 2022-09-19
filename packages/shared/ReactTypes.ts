@@ -14,3 +14,5 @@ export interface ReactElement {
 	ref: Ref;
 	__mark: 'Seven';
 }
+
+export type Action<State> = State | ((prevState: State) => State);

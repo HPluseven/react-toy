@@ -6,7 +6,12 @@ import {
 	createTextInstance,
 	Instance
 } from './hostConfig';
-import { HostComponent, HostRoot, HostText } from './workTags';
+import {
+	FunctionComponent,
+	HostComponent,
+	HostRoot,
+	HostText
+} from './workTags';
 
 const appendAllChildren = (parent: Instance, workInProgress: FiberNode) => {
 	// 遍历workInProgress所有子孙 DOM元素，依次挂载
@@ -71,6 +76,9 @@ export const completeWork = (workInProgress: FiberNode) => {
 			const textInstance = createTextInstance(newProps.content);
 			workInProgress.stateNode = textInstance;
 			// 冒泡flag
+			bubbleProperties(workInProgress);
+			return null;
+		case FunctionComponent:
 			bubbleProperties(workInProgress);
 			return null;
 		default:
