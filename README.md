@@ -1,15 +1,17 @@
 # Big-React
 
-从零实现 React v18 🎉🎉🎉
+从零实现 React v18 的核心功能，特点如下：
 
-没什么比自己亲手造个`React18`更能加深理解的了
+- 👬 与 React 源码最接近的极简实现
+- 💪 虽然实现极简，但功能完备，当前可跑通官方测试用例数量：17
+- 🚶 按`Git Tag`划分迭代步骤，记录从 0 实现的每个功能
 
 ## TODO List
 
 ### 工程类需求
 
-| 类型 | 内容                               | 完成情况 | 在哪个版本实现的                                  |
-| ---- | ---------------------------------- | -------- | ------------------------------------------------- |
+| 类型 | 内容                               | 完成情况 | 在哪个版本实现的                                     |
+| ---- | ---------------------------------- | -------- | ---------------------------------------------------- |
 | 架构 | monorepo（pnpm 实现）              | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
 | 规范 | eslint                             | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
 | 规范 | prettier                           | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
@@ -20,57 +22,91 @@
 | 规范 | tsc                                | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
 | 构建 | babel 配置                         | ✅       | [v4](https://github.com/HPluseven/react-toy/tree/v4) |
 | 构建 | Dev 环境包的构建                   | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
-| 构建 | Prod 环境包的构建                  | ⬜️      |                                                   |
-| 部署 | Github Action 执行 lint 与 test    | ⬜️      |                                                   |
-| 部署 | Github Action 根据 tag 发布 npm 包 | ⬜️      |                                                   |
+| 构建 | Prod 环境包的构建                  | ⬜️      |                                                      |
+| 部署 | Github Action 执行 lint 与 test    | ⬜️      |                                                      |
+| 部署 | Github Action 根据 tag 发布 npm 包 | ⬜️      |                                                      |
 
 ### 框架需求
 
 当前跑通 React 官方测试用例 17 个
 
-| 类型       | 内容                        | 完成情况 | 在哪个版本实现的                                  |
-| ---------- | --------------------------- | -------- | ------------------------------------------------- |
-| React      | JSX 转换                    | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
-| React      | React.isValidElement        | ✅       | [v4](https://github.com/HPluseven/react-toy/tree/v4) |
-| ReactDOM   | 浏览器环境 DOM 的插入       | ✅       | [v2](https://github.com/HPluseven/react-toy/tree/v2) |
-| ReactDOM   | 浏览器环境 DOM 的移动       | ⬜️      |                                                   |
-| ReactDOM   | 浏览器环境 DOM 的属性变化   | ⬜️      |                                                   |
-| ReactDOM   | 浏览器环境 DOM 的删除       | ⬜️      |                                                   |
-| ReactDOM   | ReactTestUtils              | ✅       | [v4](https://github.com/HPluseven/react-toy/tree/v4) |
-| ReactNoop  | ReactNoop Renderer          | ⬜️      |                                                   |
-| Reconciler | Fiber 架构                  | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
-| Reconciler | 事件模型                    | ⬜️      |                                                   |
-| Reconciler | Lane 模型                   | ⬜️      |                                                   |
-| Reconciler | 基础 Update 机制            | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
-| Reconciler | 带优先级的 Update 机制      | ⬜️      |                                                   |
-| Reconciler | 插入单节点的 reconcile 流程 | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
-| Reconciler | 插入多节点的 reconcile 流程 | ⬜️      |                                                   |
-| Reconciler | 删除节点的 reconcile 流程   | ⬜️      |                                                   |
-| Reconciler | HostText 类型支持           | ✅       | [v2](https://github.com/HPluseven/react-toy/tree/v2) |
-| Reconciler | HostComponent 类型支持      | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
-| Reconciler | HostRoot 类型支持           | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
-| Reconciler | FunctionComponent 类型支持  | ✅       | [v3](https://github.com/HPluseven/react-toy/tree/v3) |
-| React      | Hooks 架构 mount 时实现     | ✅       | [v3](https://github.com/HPluseven/react-toy/tree/v3) |
-| React      | Hooks 架构 update 时实现    | ⬜️      |                                                   |
-| Reconciler | useState 实现               | ✅       | [v3](https://github.com/HPluseven/react-toy/tree/v3) |
-| Reconciler | useEffect 实现              | ⬜️      |                                                   |
-| Reconciler | useRef 实现                 | ⬜️      |                                                   |
-| Reconciler | 同步调度流程                | ⬜️      |                                                   |
-| Reconciler | 异步调度流程                | ⬜️      |                                                   |
+| 类型       | 内容                         | 完成情况 | 在哪个版本实现的                                     |
+| ---------- | ---------------------------- | -------- | ---------------------------------------------------- |
+| React      | JSX 转换                     | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
+| React      | React.isValidElement         | ✅       | [v4](https://github.com/HPluseven/react-toy/tree/v4) |
+| ReactDOM   | 浏览器环境 DOM 的插入        | ✅       | [v2](https://github.com/HPluseven/react-toy/tree/v2) |
+| ReactDOM   | 浏览器环境 DOM 的移动        | ⬜️      |                                                      |
+| ReactDOM   | 浏览器环境 DOM 的属性变化    | ⬜️      |                                                      |
+| ReactDOM   | 浏览器环境 DOM 的删除        | ✅       | [v5](https://github.com/HPluseven/react-toy/tree/v5) |
+| ReactDOM   | ReactTestUtils               | ✅       | [v4](https://github.com/HPluseven/react-toy/tree/v4) |
+| ReactNoop  | ReactNoop Renderer           | ⬜️      |                                                      |
+| Reconciler | Fiber 架构                   | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
+| Reconciler | 事件模型                     | ✅       | [v6](https://github.com/HPluseven/react-toy/tree/v6) |
+| Reconciler | onClick 事件支持             | ✅       | [v6](https://github.com/HPluseven/react-toy/tree/v6) |
+| Reconciler | input 元素 onChange 事件支持 | ⬜️      |                                                      |
+| Reconciler | Lane 模型                    | ⬜️      |                                                      |
+| Reconciler | 基础 Update 机制             | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
+| Reconciler | 带优先级的 Update 机制       | ⬜️      |                                                      |
+| Reconciler | 插入单节点的 mount 流程      | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
+| Reconciler | 插入多节点的 mount 流程      | ⬜️      |                                                      |
+| Reconciler | 插入单节点的 reconcile 流程  | ✅       | [v5](https://github.com/HPluseven/react-toy/tree/v5) |
+| Reconciler | 插入多节点的 reconcile 流程  | ⬜️      |                                                      |
+| Reconciler | 删除节点的 reconcile 流程    | ✅       | [v5](https://github.com/HPluseven/react-toy/tree/v5) |
+| Reconciler | HostText 类型支持            | ✅       | [v2](https://github.com/HPluseven/react-toy/tree/v2) |
+| Reconciler | HostComponent 类型支持       | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
+| Reconciler | HostRoot 类型支持            | ✅       | [v1](https://github.com/HPluseven/react-toy/tree/v1) |
+| Reconciler | FunctionComponent 类型支持   | ✅       | [v3](https://github.com/HPluseven/react-toy/tree/v3) |
+| React      | Hooks 架构 mount 时实现      | ✅       | [v3](https://github.com/HPluseven/react-toy/tree/v3) |
+| React      | Hooks 架构 update 时实现     | ✅       | [v5](https://github.com/HPluseven/react-toy/tree/v5) |
+| Reconciler | useState 实现                | ✅       | [v3](https://github.com/HPluseven/react-toy/tree/v3) |
+| Reconciler | useEffect 实现               | ⬜️      |                                                      |
+| Reconciler | useRef 实现                  | ⬜️      |                                                      |
+| Reconciler | 同步调度流程                 | ⬜️      |                                                      |
+| Reconciler | 异步调度流程                 | ⬜️      |                                                      |
 
 ## 调试
 
-主要调试方式包括两个：
+提供 3 种调试方式：
 
-1. 跑`React`官方的测试用例
+1. 实时调试
 
-执行`pnpm test`
+执行`pnpm demo`会运行项目`demos`目录下的示例项目（默认项目是针对[v6](https://github.com/HPluseven/react-toy/tree/v6)的调试项目）
+
+这种方式的好处是：
+
+- 控制台会打印各个主要步骤的执行信息，可以直观看到执行流程
+
+- 热更新（包括示例代码和源码代码）
 
 2. pnpm link
 
 通过`CRA`或`Vite`起一个`React`测试项目后，在本项目执行`pnpm run build:dev`打包`react`与`react-dom`，在测试项目中通过`pnpm link`将项目依赖的`react`与`react-dom`替换为我们打包的`react`与`react-dom`
 
+这种方式的好处是：最贴合项目中实际使用`React`的情况
+
+3. 跑`React`官方的测试用例
+
+执行`pnpm test`跑官方的测试用例，用例中引用的是执行`pnpm run build:dev`打包的`react`与`react-dom`
+
+这种方式的好处是：可以从官方用例的角度观察框架实现的细节、各种边界情况
+
 ## 更新日志
+
+### [v6](https://github.com/HPluseven/react-toy/tree/v6)
+
+实现事件系统，包括如下功能：
+
+- 事件模型
+- onClick 事件支持（以及 onClickCapture 事件）
+
+### [v5](https://github.com/HPluseven/react-toy/tree/v5)
+
+实现单节点 update，包括如下功能：
+
+- 浏览器环境 DOM 的删除（比如 h3 变为 p，那么就要经历删除 h3、插入 p）
+- 插入单节点的 reconcile 流程（包括 HostComponent、HostText）
+- 删除节点的 reconcile 流程（为后续 ref、useEffect 特性做准备，实现的比较完备）
+- Hooks 架构 update 时实现
 
 ### [v4](https://github.com/HPluseven/react-toy/tree/v4)
 

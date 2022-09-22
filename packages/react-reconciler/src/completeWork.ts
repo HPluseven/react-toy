@@ -58,6 +58,9 @@ function markUpdate(fiber: FiberNode) {
 }
 
 export const completeWork = (workInProgress: FiberNode) => {
+	if (__DEV__) {
+		console.log('complete流程', workInProgress.type);
+	}
 	const newProps = workInProgress.pendingProps;
 	const current = workInProgress.alternate;
 
@@ -68,7 +71,7 @@ export const completeWork = (workInProgress: FiberNode) => {
 				// TODO 更新元素属性
 			} else {
 				// 初始化DOM
-				const instance = createInstance(workInProgress.type);
+				const instance = createInstance(workInProgress.type, newProps);
 				// 挂载DOM
 				appendAllChildren(instance, workInProgress);
 				workInProgress.stateNode = instance;
