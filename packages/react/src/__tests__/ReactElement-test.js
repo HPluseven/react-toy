@@ -233,7 +233,6 @@
 			 return <div />;
 		 }
 		 const test = ReactTestUtils.renderIntoDocument(<Test value={+undefined} />);
-		 console.log('test:', test);
 		 expect(test.props.value).toBeNaN();
 	 });
 

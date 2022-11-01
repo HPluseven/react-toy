@@ -13,7 +13,7 @@ const ReactElement = function (
 		key,
 		ref,
 		props,
-		__mark: 'Seven'
+		__mark: 'KaSong'
 	};
 
 	return element;
